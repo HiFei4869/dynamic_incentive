@@ -1,0 +1,207 @@
+bash train_text_to_image_lora_sdxl.sh
+The following values were not passed to `accelerate launch` and had defaults used instead:
+		More than one GPU was found, enabling multi-GPU training.
+		If this was unintended please pass in `--num_processes=1`.
+	`--num_machines` was set to a value of `1`
+	`--mixed_precision` was set to a value of `'no'`
+	`--dynamo_backend` was set to a value of `'no'`
+To avoid this warning pass in values for each of the problematic parameters or run `accelerate config`.
+10/07/2024 10:08:52 - INFO - __main__ - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 0
+Local process index: 0
+Device: cuda:0
+
+Mixed precision type: fp16
+
+10/07/2024 10:08:53 - INFO - __main__ - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 3
+Local process index: 3
+Device: cuda:3
+
+Mixed precision type: fp16
+
+10/07/2024 10:08:53 - INFO - __main__ - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 1
+Local process index: 1
+Device: cuda:1
+
+Mixed precision type: fp16
+
+10/07/2024 10:08:53 - INFO - __main__ - Distributed environment: MULTI_GPU  Backend: nccl
+Num processes: 4
+Process index: 2
+Local process index: 2
+Device: cuda:2
+
+Mixed precision type: fp16
+
+You are using a model of type clip_text_model to instantiate a model of type . This is not supported for all configurations of models and can yield errors.
+You are using a model of type clip_text_model to instantiate a model of type . This is not supported for all configurations of models and can yield errors.
+{'clip_sample_range', 'variance_type', 'dynamic_thresholding_ratio', 'thresholding', 'rescale_betas_zero_snr'} was not found in config. Values will be initialized to default values.
+{'latents_std', 'shift_factor', 'use_post_quant_conv', 'use_quant_conv', 'latents_mean'} was not found in config. Values will be initialized to default values.
+{'dropout', 'reverse_transformer_layers_per_block', 'attention_type'} was not found in config. Values will be initialized to default values.
+1:group_a
+1:group_b
+1:group_c
+1:group_d
+1:group_e
+1:group_f
+1:group_9
+1:group_9+10
+['group_a/**', 'group_b/**', 'group_c/**', 'group_d/**', 'group_e/**', 'group_f/**', 'group_9/**', 'group_9+10/**']
+1:group_a
+1:group_b
+1:group_c
+1:group_d
+1:group_e
+1:group_f
+1:group_9
+1:group_9+10
+['group_a/**', 'group_b/**', 'group_c/**', 'group_d/**', 'group_e/**', 'group_f/**', 'group_9/**', 'group_9+10/**']
+Resolving data files:   0%|                                                                     | 0/663 [00:00<?, ?it/s]Resolving data files:   0%|                                                                     | 0/663 [00:00<?, ?it/s]Resolving data files: 100%|████████████████████████████████████████████████████████| 663/663 [00:00<00:00, 66978.75it/s]
+Resolving data files: 100%|████████████████████████████████████████████████████████| 663/663 [00:00<00:00, 13389.69it/s]
+Downloading data:   0%|                                                                      | 0/663 [00:00<?, ?files/s]Downloading data: 100%|█████████████████████████████████████████████████████████| 663/663 [00:00<00:00, 27550.36files/s]
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 556 examples [00:00, 11999.76 examples/s]
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1750, in _prepare_split_single
+[rank1]:     for key, record in generator:
+[rank1]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/packaged_modules/folder_based_builder/folder_based_builder.py", line 308, in _generate_examples
+[rank1]:     raise ValueError(
+[rank1]: ValueError: One or several metadata.jsonl were found, but not in the same directory or in a parent directory of /mnt/lia/scratch/yisong/generative-models/group_9+10/images/image_0.jpg.
+
+[rank1]: The above exception was the direct cause of the following exception:
+
+[rank1]: Traceback (most recent call last):
+[rank1]:   File "/mnt/lia/scratch/yisong/generative-models/train_text_to_image_lora_sdxl.py", line 1370, in <module>
+[rank1]:     main(args)
+[rank1]:   File "/mnt/lia/scratch/yisong/generative-models/train_text_to_image_lora_sdxl.py", line 906, in main
+[rank1]:     dataset = load_dataset(
+[rank1]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/load.py", line 2616, in load_dataset
+[rank1]:     builder_instance.download_and_prepare(
+[rank1]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1029, in download_and_prepare
+[rank1]:     self._download_and_prepare(
+[rank1]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1791, in _download_and_prepare
+[rank1]:     super()._download_and_prepare(
+[rank1]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1124, in _download_and_prepare
+[rank1]:     self._prepare_split(split_generator, **prepare_split_kwargs)
+[rank1]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1629, in _prepare_split
+[rank1]:     for job_id, done, content in self._prepare_split_single(
+[rank1]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1786, in _prepare_split_single
+[rank1]:     raise DatasetGenerationError("An error occurred while generating the dataset") from e
+[rank1]: datasets.exceptions.DatasetGenerationError: An error occurred while generating the dataset
+Downloading data:   0%|                                                                      | 0/663 [00:00<?, ?files/s]Downloading data: 100%|█████████████████████████████████████████████████████████| 663/663 [00:00<00:00, 26846.59files/s]
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 556 examples [00:00, 12243.38 examples/s]
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1750, in _prepare_split_single
+[rank2]:     for key, record in generator:
+[rank2]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/packaged_modules/folder_based_builder/folder_based_builder.py", line 308, in _generate_examples
+[rank2]:     raise ValueError(
+[rank2]: ValueError: One or several metadata.jsonl were found, but not in the same directory or in a parent directory of /mnt/lia/scratch/yisong/generative-models/group_9+10/images/image_0.jpg.
+
+[rank2]: The above exception was the direct cause of the following exception:
+
+[rank2]: Traceback (most recent call last):
+[rank2]:   File "/mnt/lia/scratch/yisong/generative-models/train_text_to_image_lora_sdxl.py", line 1370, in <module>
+[rank2]:     main(args)
+[rank2]:   File "/mnt/lia/scratch/yisong/generative-models/train_text_to_image_lora_sdxl.py", line 906, in main
+[rank2]:     dataset = load_dataset(
+[rank2]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/load.py", line 2616, in load_dataset
+[rank2]:     builder_instance.download_and_prepare(
+[rank2]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1029, in download_and_prepare
+[rank2]:     self._download_and_prepare(
+[rank2]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1791, in _download_and_prepare
+[rank2]:     super()._download_and_prepare(
+[rank2]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1124, in _download_and_prepare
+[rank2]:     self._prepare_split(split_generator, **prepare_split_kwargs)
+[rank2]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1629, in _prepare_split
+[rank2]:     for job_id, done, content in self._prepare_split_single(
+[rank2]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1786, in _prepare_split_single
+[rank2]:     raise DatasetGenerationError("An error occurred while generating the dataset") from e
+[rank2]: datasets.exceptions.DatasetGenerationError: An error occurred while generating the dataset
+1:group_a
+1:group_b
+1:group_c
+1:group_d
+1:group_e
+1:group_f
+1:group_9
+1:group_9+10
+['group_a/**', 'group_b/**', 'group_c/**', 'group_d/**', 'group_e/**', 'group_f/**', 'group_9/**', 'group_9+10/**']
+Resolving data files:   0%|                                                                     | 0/663 [00:00<?, ?it/s]Resolving data files: 100%|████████████████████████████████████████████████████████| 663/663 [00:00<00:00, 22019.52it/s]
+Downloading data:   0%|                                                                      | 0/663 [00:00<?, ?files/s]Downloading data: 100%|█████████████████████████████████████████████████████████| 663/663 [00:00<00:00, 25900.41files/s]
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 556 examples [00:00, 12366.41 examples/s]
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1750, in _prepare_split_single
+[rank3]:     for key, record in generator:
+[rank3]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/packaged_modules/folder_based_builder/folder_based_builder.py", line 308, in _generate_examples
+[rank3]:     raise ValueError(
+[rank3]: ValueError: One or several metadata.jsonl were found, but not in the same directory or in a parent directory of /mnt/lia/scratch/yisong/generative-models/group_9+10/images/image_0.jpg.
+
+[rank3]: The above exception was the direct cause of the following exception:
+
+[rank3]: Traceback (most recent call last):
+[rank3]:   File "/mnt/lia/scratch/yisong/generative-models/train_text_to_image_lora_sdxl.py", line 1370, in <module>
+[rank3]:     main(args)
+[rank3]:   File "/mnt/lia/scratch/yisong/generative-models/train_text_to_image_lora_sdxl.py", line 906, in main
+[rank3]:     dataset = load_dataset(
+[rank3]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/load.py", line 2616, in load_dataset
+[rank3]:     builder_instance.download_and_prepare(
+[rank3]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1029, in download_and_prepare
+[rank3]:     self._download_and_prepare(
+[rank3]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1791, in _download_and_prepare
+[rank3]:     super()._download_and_prepare(
+[rank3]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1124, in _download_and_prepare
+[rank3]:     self._prepare_split(split_generator, **prepare_split_kwargs)
+[rank3]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1629, in _prepare_split
+[rank3]:     for job_id, done, content in self._prepare_split_single(
+[rank3]:   File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/datasets/builder.py", line 1786, in _prepare_split_single
+[rank3]:     raise DatasetGenerationError("An error occurred while generating the dataset") from e
+[rank3]: datasets.exceptions.DatasetGenerationError: An error occurred while generating the dataset
+1:group_a
+1:group_b
+1:group_c
+1:group_d
+1:group_e
+1:group_f
+1:group_9
+1:group_9+10
+['group_a/**', 'group_b/**', 'group_c/**', 'group_d/**', 'group_e/**', 'group_f/**', 'group_9/**', 'group_9+10/**']
+W1007 10:09:05.575000 140259238564480 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 46816 closing signal SIGTERM
+W1007 10:09:05.575000 140259238564480 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 46818 closing signal SIGTERM
+W1007 10:09:05.575000 140259238564480 torch/distributed/elastic/multiprocessing/api.py:851] Sending process 46819 closing signal SIGTERM
+E1007 10:09:06.491000 140259238564480 torch/distributed/elastic/multiprocessing/api.py:826] failed (exitcode: 1) local_rank: 1 (pid: 46817) of binary: /mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/bin/python
+Traceback (most recent call last):
+  File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/bin/accelerate", line 8, in <module>
+    sys.exit(main())
+  File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/accelerate/commands/accelerate_cli.py", line 48, in main
+    args.func(args)
+  File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/accelerate/commands/launch.py", line 1088, in launch_command
+    multi_gpu_launcher(args)
+  File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/accelerate/commands/launch.py", line 733, in multi_gpu_launcher
+    distrib_run.run(args)
+  File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/torch/distributed/run.py", line 870, in run
+    elastic_launch(
+  File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 132, in __call__
+    return launch_agent(self._config, self._entrypoint, list(args))
+  File "/mnt/lia/scratch/yisong/miniconda3/envs/sd_py10/lib/python3.10/site-packages/torch/distributed/launcher/api.py", line 263, in launch_agent
+    raise ChildFailedError(
+torch.distributed.elastic.multiprocessing.errors.ChildFailedError: 
+============================================================
+train_text_to_image_lora_sdxl.py FAILED
+------------------------------------------------------------
+Failures:
+  <NO_OTHER_FAILURES>
+------------------------------------------------------------
+Root Cause (first observed failure):
+[0]:
+  time      : 2024-10-07_10:09:05
+  host      : bnd-0-0
+  rank      : 1 (local_rank: 1)
+  exitcode  : 1 (pid: 46817)
+  error_file: <N/A>
+  traceback : To enable traceback see: https://pytorch.org/docs/stable/elastic/errors.html
+============================================================
+yisong@bnd-0-0:/mnt/lia/scratch/yisong/generative-models$ 
